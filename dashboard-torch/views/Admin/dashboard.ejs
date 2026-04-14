@@ -1,0 +1,65 @@
+<%- include('../Layout/header', { title: 'Dashboard', currentPage: 'dashboard' }) %>
+
+<p class="text-gray-200 font-medium text-lg mb-1">Vue d'ensemble</p>
+<p class="text-gray-600 text-xs mb-8">Bienvenue sur le dashboard Le Torch</p>
+
+<!-- STATS -->
+<div class="grid grid-cols-3 gap-4 mb-8">
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-5">
+        <p class="text-xs text-gray-600 uppercase tracking-widest mb-2">Articles publiés</p>
+        <p class="text-3xl font-semibold" style="color:#c8a84b"><%= articles.length %></p>
+    </div>
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-5">
+        <p class="text-xs text-gray-600 uppercase tracking-widest mb-2">Ce mois</p>
+        <p class="text-3xl font-semibold text-gray-200">
+            <%= articles.filter(a => new Date(a.date_publication).getMonth() === new Date().getMonth()).length %>
+        </p>
+    </div>
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-5">
+        <p class="text-xs text-gray-600 uppercase tracking-widest mb-2">Catégories</p>
+        <p class="text-3xl font-semibold text-gray-200">
+            <%= [...new Set(articles.map(a => a.category))].length %>
+        </p>
+    </div>
+</div>
+
+<!-- ARTICLES -->
+<p class="text-xs text-gray-600 uppercase tracking-widest mb-4">Articles récents</p>
+
+<% if (articles.length === 0) { %>
+    <div class="text-center py-24 text-gray-700">
+        <p class="text-5xl mb-4">&#128294;</p>
+        <p>Aucun article pour le moment.</p>
+    </div>
+<% } else { %>
+    <div class="flex flex-col gap-3">
+        <% articles.forEach(article => { %>
+        <div class="bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-xl p-4 flex items-center gap-4 transition-colors">
+            <div class="w-12 h-12 rounded-lg overflow-hidden bg-gray-800 flex items-center justify-center flex-shrink-0">
+                <% if (article.image) { %>
+                    <img src="/uploads/images/<%= article.image %>" class="w-full h-full object-cover">
+                <% } else { %>
+                    <span class="text-xl">&#128294;</span>
+                <% } %>
+            </div>
+            <div class="flex-1 min-w-0">
+                <p class="text-sm text-gray-300 truncate mb-1"><%= article.titre %></p>
+                <p class="text-xs text-gray-600"><%= article.category %> · <%= new Date(article.date_publication).toLocaleDateString('fr-FR') %></p>
+            </div>
+            <div class="flex gap-2 flex-shrink-0">
+                <a href="/dashboard/article/<%= article.id %>"
+                   class="text-xs text-gray-500 border border-gray-800 bg-gray-900 hover:text-gray-300 px-3 py-1.5 rounded-lg no-underline transition-colors">
+                    Voir
+                </a>
+                <form action="/dashboard/article/<%= article.id %>/delete" method="POST"
+                      onsubmit="return confirm('Supprimer cet article ?')">
+                    <button class="text-xs text-red-800 border border-red-900 bg-gray-950 hover:text-red-600 px-3 py-1.5 rounded-lg transition-colors">
+                        Supprimer
+                    </button>
+                </form>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+<% } %>
+

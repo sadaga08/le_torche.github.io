@@ -1,0 +1,65 @@
+<%- include('../Layout/header', { title: 'Nouvel article — Le Torch', currentPage: 'create' }) %>
+<style>
+    input, textarea {
+        background: #141414 !important;
+        border: 1px solid #2e2e2e !important;
+        color: #ccc !important;
+        transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus {
+        border-color: #c8a84b !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
+    .file-zone {
+        background: #141414;
+        border: 1px dashed #2e2e2e;
+        border-radius: 10px;
+        padding: 1.5rem;
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.2s;
+        position: relative;
+    }
+    .file-zone:hover { border-color: #c8a84b; }
+    .file-zone input[type="file"] {
+        position: absolute; inset: 0;
+        opacity: 0; cursor: pointer;
+        width: 100%; height: 100%;
+    }
+    .file-name {
+        font-size: 11px;
+        color: #c8a84b;
+        margin-top: 6px;
+        display: none;
+    }
+</style>
+
+<!-- ✅ Après — retirez le form, c'est juste une liste -->
+<div class="max-w-2xl">
+    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8">
+        <div class="max-w-2xl">
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8">
+            <p class="text-gray-200 font-medium text-lg mb-1">Vos articles</p>
+            <p class="text-gray-600 text-xs mb-8">Gère tes articles publiés sur Le Torch</p>
+
+            <!-- ARTICLE LIST -->
+            <div class="flex flex-col gap-4">
+                <% articles.forEach(article => { %>
+                    <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex justify-between items-center">
+                        <div>
+                            <p class="text-gray-400 text-xs"><%= article.pseudo %></p>
+                            <p class="text-sm font-semibold text-gray-200"><%= article.titre %></p>
+                            <p class="text-xs text-gray-500 mt-1"><%= new Date(article.createdAt).toLocaleDateString() %></p>
+                        </div>
+                        <a href="/dashboard/editArticle/<%= article.id %>" class="text-sm text-c8a84b hover:underline">Modifier</a>
+                    </div>
+                <% }) %>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</div>
+

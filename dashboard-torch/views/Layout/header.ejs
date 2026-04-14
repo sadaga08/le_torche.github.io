@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title || 'Dashboard — Le Torch' %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #0f0f0f; }
+        .topbar { background: linear-gradient(90deg, #000000 0%, #000000 100%); }
+        .sidebar { background: linear-gradient(180deg, #111 0%, #0d0d0d 100%); }
+        .nav-item { border-left: 2px solid transparent; transition: all 0.15s; }
+        .nav-item:hover { color: #bbb !important; background: #161616; }
+        .nav-item.active { color: #c8a84b !important; border-left-color: #c8a84b; background: #1a1500; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- TOPBAR -->
+    <header class="topbar fixed top-0 left-0 w-full h-16 z-50 border-b border-gray-900 flex items-center justify-between px-6">
+        <div class="flex items-center gap-3">
+         <img src="/LOGO.png" alt="Le Torch" class="h-10 w-auto">
+        </div>
+        <div class="flex items-center gap-3">
+            <a href="/" target="_blank"
+               class="text-xs text-gray-600 border border-gray-800 bg-gray-900 hover:text-gray-300 hover:border-gray-600 px-4 py-2 rounded-lg transition-colors flex items-center gap-2">
+                 Voir le site
+            </a>
+        </div>
+    </header>
+
+    <!-- LAYOUT : sidebar + contenu -->
+    <div class="flex pt-16 min-h-screen">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar fixed top-16 left-0 h-[calc(100vh-4rem)] w-52 border-r border-gray-900 flex flex-col py-6 z-40">
+
+            <p class="text-xs text-gray-700 uppercase tracking-widest px-5 mb-3">Navigation</p>
+
+            <a href="/dashboard"
+               class="nav-item flex items-center gap-3 px-5 py-2.5 text-sm text-gray-600 no-underline
+                      <%= currentPage === 'dashboard' ? 'active' : '' %>">
+                <span class="text-base">▦</span> Vue d'ensemble
+            </a>
+            <a href="/dashboard/create"
+               class="nav-item flex items-center gap-3 px-5 py-2.5 text-sm text-gray-600 no-underline
+                      <%= currentPage === 'create' ? 'active' : '' %>">
+                <span class="text-base">＋</span> Nouvel article
+            </a>
+            <!-- <a href="/dashboard/articles"
+               class="nav-item flex items-center gap-3 px-5 py-2.5 text-sm text-gray-600 no-underline
+                      <%= currentPage === 'articles' ? 'active' : '' %>">
+                <span class="text-base">📰</span> Liste des articles
+            </a>  -->
+
+<a href="/dashboard/vosArticles"
+   class="nav-item flex items-center gap-3 px-5 py-2.5 text-sm text-gray-600 no-underline
+          <%= currentPage === 'vosArticles' ? 'active' : '' %>">
+    <span class="text-base">📄</span> Vos articles
+</a>
+
+         
+        </aside>
+
+        <!-- CONTENU PRINCIPAL -->
+        <main class="ml-52 flex-1 p-8">

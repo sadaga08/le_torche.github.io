@@ -1,0 +1,142 @@
+<%- include('../Layout/header', { title: 'Nouvel article — Le Torch', currentPage: 'create' }) %>
+
+<style>
+    input, textarea {
+        background: #141414 !important;
+        border: 1px solid #2e2e2e !important;
+        color: #ccc !important;
+        transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus {
+        border-color: #c8a84b !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
+    .file-zone {
+        background: #141414;
+        border: 1px dashed #2e2e2e;
+        border-radius: 10px;
+        padding: 1.5rem;
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.2s;
+        position: relative;
+    }
+    .file-zone:hover { border-color: #c8a84b; }
+    .file-zone input[type="file"] {
+        position: absolute; inset: 0;
+        opacity: 0; cursor: pointer;
+        width: 100%; height: 100%;
+    }
+    .file-name {
+        font-size: 11px;
+        color: #c8a84b;
+        margin-top: 6px;
+        display: none;
+    }
+</style>
+
+<p class="text-gray-200 font-medium text-lg mb-1">Nouvel article</p>
+<p class="text-gray-600 text-xs mb-8">Remplis les champs ci-dessous pour publier un nouvel article</p>
+
+<div class="max-w-2xl">
+    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8">
+        <form action="/api/articles" method="POST" enctype="multipart/form-data" class="flex flex-col gap-6">
+
+            <!-- TITRE -->
+            <div>
+                <label class="block text-xs text-gray-600 uppercase tracking-widest mb-2">Titre</label>
+                <input type="text" name="titre" required
+                       placeholder="Ex: L'IA transforme le secteur médiatique..."
+                       class="w-full rounded-lg px-3 py-2.5 text-sm">
+            </div>
+
+            <!-- CONTENU -->
+            <div>
+                <label class="block text-xs text-gray-600 uppercase tracking-widest mb-2">Contenu</label>
+                <textarea name="content" rows="7" required
+                          placeholder="Rédige le contenu de l'article..."
+                          class="w-full rounded-lg px-3 py-2.5 text-sm"></textarea>
+            </div>
+
+            <!-- CATEGORIE + DATE -->
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs text-gray-600 uppercase tracking-widest mb-2">Catégorie</label>
+                    <input type="text" name="category"
+                           placeholder="Tech, Actu, Société..."
+                           class="w-full rounded-lg px-3 py-2.5 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-600 uppercase tracking-widest mb-2">Date de publication</label>
+                    <input type="date" name="date_publication"
+                           class="w-full rounded-lg px-3 py-2.5 text-sm">
+                </div>
+            </div>
+
+            <!-- AUTHOR ID -->
+            <div>
+                <label class="block text-xs text-gray-600 uppercase tracking-widest mb-2">Author ID</label>
+                <input type="number" name="author_id" placeholder="1"
+                       class="w-full rounded-lg px-3 py-2.5 text-sm">
+            </div>
+
+            <!-- IMAGE + VIDEO -->
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs text-gray-600 uppercase tracking-widest mb-2">Image</label>
+                    <div class="file-zone" id="zone-image">
+                        <input type="file" name="image" accept="image/*"
+                               onchange="showName(this, 'name-image')">
+                        <p class="text-2xl mb-2">📷</p>
+                        <p class="text-xs text-gray-600">
+                            <span class="text-yellow-600">Choisir</span> une image
+                        </p>
+                        <p class="file-name" id="name-image"></p>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-600 uppercase tracking-widest mb-2">Vidéo</label>
+                    <div class="file-zone" id="zone-video">
+                        <input type="file" name="video" accept="video/*"
+                               onchange="showName(this, 'name-video')">
+                        <p class="text-2xl mb-2">🎬</p>
+                        <p class="text-xs text-gray-600">
+                            <span class="text-yellow-600">Choisir</span> une vidéo
+                        </p>
+                        <p class="file-name" id="name-video"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIVIDER -->
+            <div class="border-t border-gray-800"></div>
+
+            <!-- ACTIONS -->
+            <div class="flex items-center justify-between gap-4">
+                <a href="/dashboard"
+                   class="text-sm text-gray-600 hover:text-gray-400 transition-colors no-underline">
+                    ← Annuler
+                </a>
+                <button type="submit"
+                        class="text-gray-900 font-semibold py-2.5 px-8 rounded-xl text-sm transition-opacity"
+                        style="background: linear-gradient(135deg, #c8a84b 0%, #a07830 100%)">
+                    Publier l'article
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+    function showName(input, targetId) {
+        const el = document.getElementById(targetId);
+        if (input.files && input.files[0]) {
+            el.textContent = input.files[0].name;
+            el.style.display = 'block';
+        }
+    }
+</script>
+
