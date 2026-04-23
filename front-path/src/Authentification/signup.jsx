@@ -62,7 +62,7 @@ const Signup = () => {
                                 value={pseudo}
                                 onChange={(e) => setPseudo(e.target.value)}
                                 required
-                                className='w-full p-4 rounded-xl border-2 border-slate-300 focus:border-teal-400 focus:outline-none transition duration-300 mb-4'
+                                className='w-full p-4 rounded-xl border-2 text-white border-slate-300 focus:border-teal-400 focus:outline-none transition duration-300 mb-4'
                             />
                             <input
                                 type="email"
@@ -70,7 +70,7 @@ const Signup = () => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
-                                className='w-full p-4 rounded-xl border-2 border-slate-300 focus:border-teal-400 focus:outline-none transition duration-300 mb-4'
+                                className='w-full p-4 rounded-xl border-2 text-white border-slate-300 focus:border-teal-400 focus:outline-none transition duration-300 mb-4'
                             />
                             <input
                                 type="password"
@@ -78,7 +78,7 @@ const Signup = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
-                                className='w-full p-4 rounded-xl border-2 border-slate-300 focus:border-teal-400 focus:outline-none transition duration-300 mb-4'
+                                className='w-full p-4 rounded-xl border-2 text-white border-slate-300 focus:border-teal-400 focus:outline-none transition duration-300 mb-4'
                             />
 
                             {/* Messages feedback */}
@@ -92,7 +92,16 @@ const Signup = () => {
                             >
                                 {loading ? "Inscription..." : "S'inscrire"}
                             </button>
+
+                           
                         </div>
+                         <div className='text-center items-center justify-center  mt-14'>
+                                <Link to="/Authentification/login">
+                                    <p className='text-blue-400 hover:text-blue-300 transition duration-300'>
+                                        Vous avez déjà un compte ? <span className='text-teal-700 text-xs'>Connectez-vous</span>
+                                    </p>
+                                </Link>
+                            </div>
                     </form>
                 </motion.div>
 

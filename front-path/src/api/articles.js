@@ -21,18 +21,26 @@ export const inscription = async (pseudo, email, password) => {
 };
 
 export const connexion = async (email, password) => {
-  const res = await fetch(`${BASE_URL}/api/auth/connexion`, { // ← /api/auth
+  const res = await fetch(`${BASE_URL}/api/auth/connexion`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });
   if (!res.ok) throw new Error("Erreur connexion");
   const data = await res.json();
-  if (data.token) sessionStorage.setItem("token", data.token);
+  
+  if (data.token) {
+    localStorage.setItem("token", data.token); 
+    localStorage.setItem("role", data.role);   
+  }
+  
   return data;
 };
 
-export const deconnexion = () => sessionStorage.removeItem("token");
+export const deconnexion = () => {
+  localStorage.removeItem("token"); 
+  localStorage.removeItem("role");
+};
 
 // ── ADMIN ─────────────────────────────────────────────────────────
 export const listerUtilisateurs = async () => {
@@ -96,4 +104,31 @@ export const supprimerVosArticle = async (id) => {
   });
   if (!res.ok) throw new Error("Erreur suppression article");
   return res.json();
+};
+
+
+//  Après — pointe vers la bonne route
+export const getVideos = async () => {
+  const res = await fetch(`${BASE_URL}/api/videoTorch`);
+  if (!res.ok) throw new Error("Erreur fetch vidéos");
+  return res.json();
+};
+
+
+
+// ── COMMENTAIRES ──────────────────────────────────────────────────
+export const getCommentaires = async (article_id) => {
+    const res = await fetch(`${BASE_URL}/api/commentaires/${article_id}`);
+    if (!res.ok) throw new Error("Erreur fetch commentaires");
+    return res.json();
+};
+
+export const ajouterCommentaire = async (article_id, pseudo, contenu) => {
+    const res = await fetch(`${BASE_URL}/api/commentaires/${article_id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pseudo, contenu }),
+    });
+    if (!res.ok) throw new Error("Erreur ajout commentaire");
+    return res.json();
 };

@@ -20,7 +20,7 @@ exports.creerArticle = async (req, res) => {
             category
         });
 
-        res.redirect('/dashboard'); // ✅ redirige vers le dashboard après succès
+        res.redirect('/dashboard'); 
 
     } catch (error) {
         console.log(error);

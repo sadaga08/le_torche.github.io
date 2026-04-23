@@ -18,6 +18,8 @@ const Technologie = () => {
                     a.category?.toLowerCase() === 'tech'
                 );
                 setArticles(techArticles);
+                    console.log("techArticles →", techArticles); // ← ajoutez ça
+
             })
             .catch(err => setError(err.message))
             .finally(() => setLoading(false));
@@ -97,27 +99,24 @@ const Technologie = () => {
                     </div>
                 </div>
             </div>
-
             {/* AUTRES ARTICLES */}
-            {autreArticleTechno.length > 0 && (
-                <div className="w-full space-y-8 mt-16">
-                    <h2 className='text-3xl md:text-4xl font-bold text-white'>
-                        Autres articles
-                    </h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        {autreArticleTechno.map((article, index) => (
-    <TechnologieCard
-        key={article.id}
-        article={article}
-        index={index}
-    />
-))}
-
-<VideoCard />
-                    </div>
-                </div>
-            )}
-            <VideoCard />
+{autreArticleTechno.length > 0 && (
+    <div className="w-full space-y-8 mt-16">
+        <h2 className='text-3xl md:text-4xl font-bold text-white'>
+            Autres articles
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {autreArticleTechno.map((article, index) => (
+                <TechnologieCard
+                    key={article.id}
+                    article={article}
+                    index={index}
+                />
+            ))}
+        </div>
+    </div>
+)}
+<VideoCard />  
         </>
     );
 };

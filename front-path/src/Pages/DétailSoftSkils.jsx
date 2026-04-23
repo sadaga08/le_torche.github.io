@@ -1,6 +1,5 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { softSkilData } from '../data/SoftSkils'
 import { number } from 'framer-motion'
 import { Link } from 'react-router-dom'
 const DétailSoftSkils = () => {
@@ -78,13 +77,7 @@ const DétailSoftSkils = () => {
                 </p>
 
                 {/* VIDEO */}
-                {article.video && (
-                    <div className="mt-8">
-                        <video controls className="w-full rounded-2xl">
-                            <source src={`${import.meta.env.VITE_API_URL}/uploads/videos/${article.video}`} />
-                        </video>
-                    </div>
-                )}
+                
             </div>
 
             {/* CTA */}

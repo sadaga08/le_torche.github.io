@@ -2,19 +2,26 @@ import React, { useEffect, useState } from 'react'
 import VideoCard from '../Composant/HomePges/VideoCard'
 import { Link } from 'react-router-dom'
 import OrientationCard from '../Feature/OrientationCard'
+import { getArticles } from '../api/articles'
 
 const Orientation = () => {
     const [articles, setArticles] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
-    useEffect(() => {
-        fetch(`${import.meta.env.VITE_API_URL}/api/articles`)
-            .then(res => res.json())
-            .then(data => setArticles(data))
-            .catch(err => setError(err.message))
-            .finally(() => setLoading(false))
-    }, [])
+   useEffect(() => {
+              getArticles()
+                  .then(data => {
+                      // filtre uniquement la catégorie Technologie
+                      const softSkilsArticles = data.filter(a =>
+                          a.category?.toLowerCase() === 'orientation'
+                      );
+                      setArticles(softSkilsArticles);
+                  })
+                  .catch(err => setError(err.message))
+                  .finally(() => setLoading(false));
+          }, []);
+   
 
     if (loading) return (
         <div className="flex items-center justify-center h-64">

@@ -1,0 +1,47 @@
+<%- include('../Layout/header', { title: 'Dashboard', currentPage: 'dashboard' }) %>
+
+<div class="max-w-2xl items-center mx-auto mt-10">
+    <div class="max-w-2xl">
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8">
+
+            <p class="text-gray-200 font-medium text-lg mb-1">Vidéos publiées</p>
+            <p class="text-gray-600 text-xs mb-8">Gère les vidéos publiées sur Le Torch</p>
+
+            <div class="flex flex-col gap-4">
+
+                <% if (videotorch.length === 0) { %>
+                    <p class="text-gray-500 text-sm text-center">Aucune vidéo publiée.</p>
+                <% } %>
+
+                 <a href="/dashboard/videoTorch/create"
+       class="bg-yellow-500 hover:bg-yellow-600 text-black  text-center font-bold px-4 py-2 rounded-xl text-sm transition">
+        + Ajouter une vidéo
+              </a>
+
+                <% videotorch.forEach(video => { %>
+                    <div id="video-<%= video.id %>" class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex justify-between items-center">
+                        <div>
+                            
+                            <p class="text-xs text-gray-500 mt-1">
+                                <%= new Date(video.createdAt).toLocaleDateString('fr-FR') %>
+                            </p>
+                            <p class="text-gray-400 text-xs"><%= video.titre %></p>
+                            <p class="text-sm font-semibold text-gray-200"><%= video.description %></p>
+                        </div>
+
+                        
+                        <form action="/api/videoTorch/<%= video.id %>?_method=DELETE" method="POST"
+                              onsubmit="return confirm('Supprimer cette vidéo ?')">
+                            <button type="submit"
+                                class="text-sm text-white bg-red-500 px-3 py-2 rounded-xl hover:bg-red-600 transition">
+                                Supprimer
+                            </button>
+                        </form>
+
+                    </div>
+                <% }) %> 
+
+            </div>
+        </div>
+    </div>
+</div>

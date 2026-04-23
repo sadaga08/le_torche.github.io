@@ -6,6 +6,7 @@ import HomePage from './Composant/HomePges/HomePage'
 import Footer from './Composant/Footer'
 import Login from './Authentification/Login'
 import Signup from './Authentification/signup'
+import ProtectRouter from './Composant/ProtectRouter'
 // importation des pages
 import Technologie from './Pages/Technologie'
 import Orientation from './Pages/Orientation'
@@ -28,11 +29,10 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/Technologie' element={<Technologie />} />
+          // Routes protégées
+          <Route element={<ProtectRouter />}>
+           <Route path='/Technologie' element={<Technologie />} />
           <Route path='/Technologie/:id' element={<DetailTechnologie />} />
-          <Route path='/Authentification/Login' element={<Login /> }/>
-          <Route path='/Authentification/Signup' element={<Signup /> }/>
           <Route path='/Orientation' element={<Orientation />} />
           <Route path='/Orientation/:id' element={<DetailOrient />} />
           <Route path='/SoftSkils' element={<SoftSkils />} />
@@ -42,7 +42,12 @@ function App() {
           <Route path='/Article' element={<Article />} />
           <Route path='/Article/:id' element={<DetailArticle />} />
           <Route path='/PublierArticle/' element={<PublierArticle />} />
-          <Route path='/VoirArticlePublier' element={<VoirArticlePublier />} />
+          <Route path="/VoirArticlePublier" element={<VoirArticlePublier />} />
+          </Route>
+          // Routes publiques
+          <Route path='/' element={<HomePage />} />
+          <Route path='/Authentification/Login' element={<Login /> }/>
+          <Route path='/Authentification/Signup' element={<Signup /> }/>
         </Routes>
         <Footer />
       </BrowserRouter>

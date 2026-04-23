@@ -1,6 +1,5 @@
 import React from "react";
 import VideoCard from "../Composant/HomePges/VideoCard";
-import { softSkilData } from "../data/SoftSkils";
 import { Link } from "react-router-dom";
 import ArticleCard from "../Feature/ArticleCard";
 import { motion } from "framer-motion";
@@ -104,13 +103,13 @@ const Article = () => {
             </div>
 
             {/* AUTRES ARTICLES */}
-            {autreArticleTechno.length > 0 && (
+            {autreArticleArticles.length > 0 && (
                 <div className="w-full space-y-8 mt-16">
                     <h2 className='text-3xl md:text-4xl font-bold text-white'>
                         Autres articles
                     </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        {autreArticleTechno.map((article, index) => (
+                        {autreArticleArticles.map((article, index) => (
                             <ArticleCard
                                 key={article.id}
                                 article={article}

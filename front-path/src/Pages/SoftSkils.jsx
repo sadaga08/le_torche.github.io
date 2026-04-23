@@ -1,6 +1,5 @@
 import React from "react";
 import VideoCard from "../Composant/HomePges/VideoCard";
-import { softSkilData } from "../data/SoftSkils";
 import { Link } from "react-router-dom";
 import SoftSkilsCard from "../Feature/SoftSkilsCard";
 import { motion } from "framer-motion";
@@ -12,18 +11,18 @@ const SoftSkils = () => {
      const [loading, setLoading] = useState(true);
      const [error, setError] = useState(null);
  
-     useEffect(() => {
-         getArticles()
-             .then(data => {
-                 // filtre uniquement la catégorie Technologie
-                 const softSkilsArticles = data.filter(a =>
-                     a.category?.toLowerCase() === 'softskills'
-                 );
-                 setArticles(softSkilsArticles);
-             })
-             .catch(err => setError(err.message))
-             .finally(() => setLoading(false));
-     }, []);
+      useEffect(() => {
+            getArticles()
+                .then(data => {
+                    // filtre uniquement la catégorie Technologie
+                    const softSkilsArticles = data.filter(a =>
+                        a.category?.toLowerCase() === 'softskills'
+                    );
+                    setArticles(softSkilsArticles);
+                })
+                .catch(err => setError(err.message))
+                .finally(() => setLoading(false));
+        }, []);
  
      if (loading) return (
          <div className="flex items-center justify-center h-64">
@@ -102,13 +101,13 @@ const SoftSkils = () => {
             </div>
 
             {/* AUTRES ARTICLES */}
-            {autreArticleTechno.length > 0 && (
+            {autreArticleSoftSkils.length > 0 && (
                 <div className="w-full space-y-8 mt-16">
                     <h2 className='text-3xl md:text-4xl font-bold text-white'>
                         Autres articles
                     </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        {autreArticleTechno.map((article, index) => (
+                        {autreArticleSoftSkils.map((article, index) => (
                             <SoftSkilsCard
                                 key={article.id}
                                 article={article}

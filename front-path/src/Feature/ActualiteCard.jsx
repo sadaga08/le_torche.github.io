@@ -1,15 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-const ActualiteCard = ({article , index}) => {
+
+const ActualiteCard = ({ article, index }) => {
+
+ const imageUrl = article.image
+  ? `${import.meta.env.VITE_API_URL}/uploads/images/${article.image}`
+  : '/placeholder.jpg'
+  console.log("imageUrl →", imageUrl) // ← ajoutez cette ligne temporairement
+
   return (
-    <>
-     <div className="w-full px-6 py-8">
-        <div className="bg-white rounded-2xl p-5 py-6 px-4 transition-all duration-200 shadow shadow-lh hover:shadow-2xl">
-            {/* IMAGE */}
+    <div className="w-full px-6 py-8">
+      <div className="bg-white rounded-2xl p-5 py-6 px-4 transition-all duration-200 shadow hover:shadow-2xl">
+
+        {/* IMAGE */}
         <div className="w-full border-2 border-slate-500 p-3 rounded-xl overflow-hidden">
           <img
-            src={article.images}
-            alt={article.title}
+            src={imageUrl}        // ✅ image (sans s) + URL complète
+            alt={article.titre}   // ✅ titre (français)
             className="w-full h-52 object-cover rounded-lg group-hover:scale-105 transition duration-500"
           />
         </div>
@@ -17,14 +24,14 @@ const ActualiteCard = ({article , index}) => {
         {/* SEPARATOR */}
         <div className="border-b-4 border-yellow-400 my-4"></div>
 
-        {/* TITLE */}
+        {/* TITRE */}
         <div className="flex items-center justify-center text-center mb-4">
           <h1 className="text-2xl text-slate-950 font-bold group-hover:text-cyan-600 transition duration-300">
-            {article.title}
+            {article.titre}       {/* ✅ titre (français) */}
           </h1>
         </div>
 
-        {/* BUTTON */}
+        {/* BOUTON */}
         <div className="flex items-center justify-center">
           <Link
             to={`/Actualite/${article.id}`}
@@ -33,10 +40,9 @@ const ActualiteCard = ({article , index}) => {
             Voir l'article
           </Link>
         </div>
-        </div>
 
       </div>
-    </>
+    </div>
   )
 }
 

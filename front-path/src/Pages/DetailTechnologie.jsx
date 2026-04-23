@@ -77,13 +77,7 @@ const DetailTechnologie = () => {
                 </p>
 
                 {/* VIDEO si disponible */}
-                {article.video && (
-                    <div className="mt-8">
-                        <video controls className="w-full rounded-2xl">
-                            <source src={`${import.meta.env.VITE_API_URL}/uploads/videos/${article.video}`} />
-                        </video>
-                    </div>
-                )}
+                
 
             </div>
 

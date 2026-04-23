@@ -1,19 +1,23 @@
 const vosArticlesModels = require('../models/vosArticlesModels');
 
-
-exports.creerVosArticles = async(req ,res) =>{
+exports.creerVosArticles = async (req, res) => {
     try {
-        const {pseudo , theme , titre , description } = req.body
+        const { pseudo, theme, titre, description } = req.body;
 
-        await vosArticlesModels.creerVosArticle({
+        const article = await vosArticlesModels.creerVosArticle({
             pseudo,
             theme,
             titre,
             description
         });
-        res.redirect('/dashboard');
+
+        res.status(201).json({ 
+            message: "Article créé avec succès",
+            article 
+        });
+
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).json({ message: "Erreur lors de la création de l'article" });
     }
 }
@@ -41,7 +45,9 @@ exports.supprimerVosArticles = async(req, res) => {
     try {
         const {id} = req.params;
         await vosArticlesModels.supprimerVosArticle(id);
-        res.status(200).json({ message: "Article supprimé avec succès" }); // ← ajouter
+        redirection('/dashboard/vosArticles');
+        // res.status(200).json({ message: "Article supprimé avec succès" }); 
+
     } catch (error) {
         res.status(500).json({ message: "Erreur serveur" });
     }

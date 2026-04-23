@@ -36,15 +36,13 @@
     }
 </style>
 
-<!-- ✅ Après — retirez le form, c'est juste une liste -->
-<div class="max-w-2xl">
+<div class="max-w-2xl items-center mx-auto mt-10">
     <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8">
         <div class="max-w-2xl">
         <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8">
             <p class="text-gray-200 font-medium text-lg mb-1">Vos articles</p>
             <p class="text-gray-600 text-xs mb-8">Gère tes articles publiés sur Le Torch</p>
 
-            <!-- ARTICLE LIST -->
             <div class="flex flex-col gap-4">
                 <% articles.forEach(article => { %>
                     <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex justify-between items-center">
@@ -53,8 +51,12 @@
                             <p class="text-sm font-semibold text-gray-200"><%= article.titre %></p>
                             <p class="text-xs text-gray-500 mt-1"><%= new Date(article.createdAt).toLocaleDateString() %></p>
                         </div>
-                        <a href="/dashboard/editArticle/<%= article.id %>" class="text-sm text-c8a84b hover:underline">Modifier</a>
-                    </div>
+<form action="/api/vosArticles/<%= article.id %>?_method=DELETE" method="POST" 
+      onsubmit="return confirm('Supprimer cet article ?')">
+    <button type="submit" class="text-sm text-white bg-red-500 p-2 rounded-xl hover:bg-red-600">
+        Supprimer
+    </button>
+</form>                    </div>
                 <% }) %>
             </div>
 

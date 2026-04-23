@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { creerVosArticle } from '../api/articles' 
-
 const PublierArticle = () => {
   const navigate = useNavigate()
   const [erreur, setErreur] = useState('')
@@ -13,6 +12,7 @@ const PublierArticle = () => {
     titre: '',      // ← "titre" au lieu de "title" pour correspondre au backend
     description: '' // ← "description" au lieu de "content"
   })
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -30,7 +30,7 @@ const PublierArticle = () => {
         formData.titre,
         formData.description
       )
-      navigate('/VoirArticlePublier')
+navigate('/VoirArticlePublier')
     } catch (err) {
       setErreur("Erreur lors de la publication. Réessayez.")
     } finally {

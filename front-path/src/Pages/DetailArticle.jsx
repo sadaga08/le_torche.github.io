@@ -1,6 +1,5 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { articlesData } from '../data/ArticleData'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 const DetailArticle = () => {
@@ -77,14 +76,7 @@ const DetailArticle = () => {
                     {article.content}
                 </p>
 
-                {/* VIDEO */}
-                {article.video && (
-                    <div className="mt-8">
-                        <video controls className="w-full rounded-2xl">
-                            <source src={`${import.meta.env.VITE_API_URL}/uploads/videos/${article.video}`} />
-                        </video>
-                    </div>
-                )}
+                
             </div>
 
             {/* CTA */}

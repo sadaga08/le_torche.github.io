@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const ArticleCard = ({ article, index }) => {
+  const imageUrl = article.image
+  ? `${import.meta.env.VITE_API_URL}/uploads/images/${article.image}`
+  : '/placeholder.jpg'
   return (
     <>
     <div className="w-full py-12 px-4 md:px-6">

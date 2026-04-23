@@ -1,0 +1,88 @@
+<%- include('../Layout/header', { title: 'Nouvel article — Le Torch', currentPage: 'create' }) %>
+
+<div class="max-w-2xl mx-auto mt-10">
+    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8">
+
+        <p class="text-gray-200 font-medium text-lg mb-1">Ajouter une vidéo</p>
+        <p class="text-gray-600 text-xs mb-8">Publie une nouvelle vidéo sur Le Torch</p>
+
+        <% if (locals.erreur) { %>
+            <p class="text-red-400 text-sm text-center mb-4"><%= erreur %></p>
+        <% } %>
+
+        <form action="/api/videoTorch" method="POST" enctype="multipart/form-data"
+              class="flex flex-col gap-4">
+
+           
+
+            <!-- Titre -->
+            <div>
+                <label class="text-gray-400 text-xs mb-1 block">Titre</label>
+                <input
+                    type="text"
+                    name="titre"
+                    required
+                    placeholder="Titre de la vidéo"
+                    class="w-full bg-gray-800 border border-gray-700 text-gray-200 rounded-xl px-4 py-3 focus:border-yellow-500 focus:outline-none"
+                />
+            </div>
+
+            <!-- Description -->
+            <div>
+                <label class="text-gray-400 text-xs mb-1 block">Description</label>
+                <textarea
+                    name="description"
+                    rows="4"
+                    placeholder="Description de la vidéo"
+                    class="w-full bg-gray-800 border border-gray-700 text-gray-200 rounded-xl px-4 py-3 focus:border-yellow-500 focus:outline-none"
+                ></textarea>
+            </div>
+
+            <!-- Catégorie -->
+            <div>
+                <label class="text-gray-400 text-xs mb-1 block">Catégorie</label>
+                <select
+                    name="categorie"
+                    class="w-full bg-gray-800 border border-gray-700 text-gray-200 rounded-xl px-4 py-3 focus:border-yellow-500 focus:outline-none"
+                >
+                    <option value="technologie">Technologie</option>
+                    <option value="orientation">Orientation</option>
+                    <option value="softskills">Soft Skills</option>
+                    <option value="news">Actualité</option>
+                </select>
+            </div>
+
+            <!-- Fichier vidéo -->
+            <div>
+                <label class="text-gray-400 text-xs mb-1 block">Fichier vidéo</label>
+                <div class="bg-gray-800 border border-dashed border-gray-600 rounded-xl p-6 text-center relative hover:border-yellow-500 transition">
+                    <p class="text-gray-500 text-sm">Cliquez ou glissez votre vidéo ici</p>
+                    <p class="text-gray-600 text-xs mt-1">MP4, MOV, AVI — max 100MB</p>
+                    <p id="file-name" class="text-yellow-500 text-xs mt-2"></p>
+                    <input
+                        type="file"
+                        name="video"
+                        accept="video/*"
+                        required
+                        onchange="document.getElementById('file-name').textContent = this.files[0]?.name"
+                        class="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                    />
+                </div>
+            </div>
+
+            <!-- Boutons -->
+            <div class="flex gap-3 mt-4">
+                <button
+                    type="submit"
+                    class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 rounded-xl transition"
+                >
+                    Publier la vidéo
+                </button>
+                
+                   
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import { GoArrowRight } from "react-icons/go";
 import Accueil from "../../assets/Accueil.png"
 
-import VideoCard from './VideoCard';
+import {getVideos} from "../../api/articles";
+import Motif from './Motif';
 import InfoCard from './InfoCard';
 const HomePage = () => {
   // Animations variants
@@ -151,13 +152,14 @@ const HomePage = () => {
     {/* Deuxième section */}
     <div className="flex w-full   ">
       <Link 
-      to={"/Pages/article"}
+       to="/Article"
       className='flex text-2xl  gap-3 font-extrabold text-slate-200 ml-3 mt-2'>
       Dernière Publication <span className='font-light '><GoArrowRight size={42}/></span>
       </Link>
     </div>
-    < InfoCard/>
-        <VideoCard />
+    <InfoCard/>
+    <Motif/>
+
     </>
   );
 };

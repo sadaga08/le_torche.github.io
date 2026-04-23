@@ -16,17 +16,17 @@
 <body class="min-h-screen flex flex-col">
 
     <!-- TOPBAR -->
-    <header class="topbar fixed top-0 left-0 w-full h-16 z-50 border-b border-gray-900 flex items-center justify-between px-6">
-        <div class="flex items-center gap-3">
-         <img src="/LOGO.png" alt="Le Torch" class="h-10 w-auto">
-        </div>
-        <div class="flex items-center gap-3">
-            <a href="/" target="_blank"
-               class="text-xs text-gray-600 border border-gray-800 bg-gray-900 hover:text-gray-300 hover:border-gray-600 px-4 py-2 rounded-lg transition-colors flex items-center gap-2">
-                 Voir le site
-            </a>
-        </div>
-    </header>
+  <header class="topbar fixed top-0 left-0 w-full h-16 z-50 border-b border-gray-900 flex items-center justify-between px-6">
+    <div class="flex items-center gap-3">
+        <img src="/LOGO.png" alt="Le Torch" class="h-10 w-auto">
+    </div>
+    <div class="flex items-center gap-3">
+        <a href="http://localhost:5173/" target="_blank"
+           class="text-xs text-gray-600 border border-gray-800 bg-gray-900 hover:text-gray-300 hover:border-gray-600 px-4 py-2 rounded-lg transition-colors flex items-center gap-2">
+            Voir le site
+        </a>
+    </div>
+</header>
 
     <!-- LAYOUT : sidebar + contenu -->
     <div class="flex pt-16 min-h-screen">
@@ -58,8 +58,13 @@
     <span class="text-base">📄</span> Vos articles
 </a>
 
+
+ <a href="/dashboard/videoTorch"
+    class="nav-item flex items-center gap-3 px-5 py-2.5 text-sm text-gray-600 no-underline
+             <%= currentPage === 'videoTorch' ? 'active' : '' %>">
+     <span class="text-base"></span> Vidéos du Torch
+ </a>
          
         </aside>
-
         <!-- CONTENU PRINCIPAL -->
         <main class="ml-52 flex-1 p-8">

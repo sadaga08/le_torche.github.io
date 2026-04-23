@@ -1,12 +1,11 @@
 import React from "react";
 import VideoCard from "../Composant/HomePges/VideoCard";
-import { softSkilData } from "../data/SoftSkils";
 import { Link } from "react-router-dom";
 import SoftSkilsCard from "../Feature/SoftSkilsCard";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getArticles } from '../api/articles'
-
+import ActualiteCard from "../Feature/ActualiteCard";
 const Actualite = () => {
 
    const [articles, setArticles] = useState([]);
@@ -62,7 +61,7 @@ const Actualite = () => {
                     transition={{ duration: 0.6 }}
                     className='font-extrabold text-3xl text-white text-center'
                 >
-                    Découvrez tous les articles et vidéos sur l'avancée technologique
+                    Découvrez tous les articles et vidéos sur l'actualité universitaire
                 </motion.h1>
             </div>
 
@@ -92,7 +91,7 @@ const Actualite = () => {
                         </span>
                         <div className='flex items-center justify-center mt-14'>
                             <Link
-                                to={`/news/${featureArticleNews.id}`}
+                                to={`/Actualite/${featureArticleNews.id}`}
                                 className='inline-flex items-center text-white gap-3 bg-gradient-to-r from-slate-700 to-slate-900 font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:-translate-y-1'
                             >
                                 Lire l'article complet →
@@ -103,14 +102,14 @@ const Actualite = () => {
             </div>
 
             {/* AUTRES ARTICLES */}
-            {autreArticleTechno.length > 0 && (
+            {autreArticleNews.length > 0 && (
                 <div className="w-full space-y-8 mt-16">
                     <h2 className='text-3xl md:text-4xl font-bold text-white'>
                         Autres articles
                     </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        {autreArticleTechno.map((article, index) => (
-                            <ArticleCard
+                        {autreArticleNews.map((article, index) => (
+                            <ActualiteCard
                                 key={article.id}
                                 article={article}
                                 index={index}

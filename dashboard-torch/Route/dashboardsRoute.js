@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const articleModel = require('../models/articleModel');
-const vosArticlesModels = require('../models/vosArticlesModels'); // ← ajouter
-
+const vosArticlesModels = require('../models/vosArticlesModels');
+const videoModels = require('../models/videoModels'); 
+// Dashboard principal
 router.get('/', async (req, res) => {
     try {
         const articles = await articleModel.trouverArticle();
-        res.render('Admin/dashboard', { articles }); 
+        res.render('Admin/dashboard', { articles });
     } catch (error) {
         console.log(error);
         res.status(500).send('Erreur serveur');
@@ -18,7 +19,7 @@ router.get('/create', (req, res) => {
     res.render('Admin/createArticle');
 });
 
-// ✅ AJOUTER — Vos articles
+// Vos articles (étudiants)
 router.get('/vosArticles', async (req, res) => {
     try {
         const articles = await vosArticlesModels.trouverVosArticle();
@@ -27,6 +28,22 @@ router.get('/vosArticles', async (req, res) => {
         console.log(error);
         res.status(500).send('Erreur serveur');
     }
+});
+
+// ✅ Vidéos — route manquante
+router.get('/videoTorch', async (req, res) => {
+    try {
+        const videotorch = await videoModels.trouverVideoTorch();
+        res.render('Admin/videoTorch', { videotorch, currentPage: 'videoTorch' });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Erreur serveur');
+    }
+});
+
+// 
+router.get('/videoTorch/create', (req, res) => {
+    res.render('Admin/createVideo');
 });
 
 // Détail d'un article
@@ -40,7 +57,7 @@ router.get('/article/:id', async (req, res) => {
     }
 });
 
-// Supprimer (via formulaire POST avec method override)
+// Supprimer un article
 router.post('/article/:id/delete', async (req, res) => {
     try {
         await articleModel.supprimerArticle(req.params.id);
