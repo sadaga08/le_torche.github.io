@@ -113,9 +113,9 @@ const Signup = () => {
                 <motion.div className="flex flex-col items-center justify-center bg-white p-4 md:p-6 rounded-4xl shadow shadow-slate-500 max-w-4xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }}>
                     <h1 className='text-center items-center text-black/900 text-3xl font-bold mb-4'>Découvrez qui nous sommes</h1>
                     <div className='text-gray-700 leading-relaxed space-y-4'>
-                        <p><span className='text-slate-900 font-extrabold text-2xl'>PATH.TECH</span> est plus qu'une simple plateforme ou un simple journal universitaire, c'est un héritage, un guide pour tous les étudiants.</p>
+                        <p><span className='text-slate-900 font-extrabold text-2xl'>Le Torch</span> est plus qu'une simple plateforme ou un simple journal universitaire, c'est un héritage, un guide pour tous les étudiants.</p>
                         <p>Être orienté à l'UNCHK, c'est nous orienter vers un abattoir car une fois que vous y êtes, vous vous sentez perdu...</p>
-                        <p><span className='text-slate-900 font-extrabold text-2xl'>PATH.TECH</span> est comme un safe-place qui vous permet d'avoir toutes les actualités au sein de l'université.</p>
+                        <p><span className='text-slate-900 font-extrabold text-2xl'>Le Torch</span> est comme un safe-place qui vous permet d'avoir toutes les actualités au sein de l'université.</p>
                     </div>
                 </motion.div>
 

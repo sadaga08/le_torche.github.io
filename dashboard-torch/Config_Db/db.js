@@ -10,12 +10,12 @@ const db = mysql.createPool({
 
 db.getConnection((err, connection) => {
     if (err) {
-        console.log("❌ Connexion MySQL échouée :");
+        console.log("Connexion MySQL échouée :");
         console.log("Code :", err.code);
         console.log("Message :", err.message);
         console.log("Erreur complète :", err);
     } else {
-        console.log("✅ Connexion MySQL réussie !");
+        console.log("Connexion MySQL réussie !");
         connection.release();
     }
 });
