@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Accueil from "../../assets/Accueil2.png"
+import Accueil from "../../assets/Accueil8.png"
 const InfoCard = () => {
   return (
     <div className="w-full min-h-screen px-4 md:px-6 lg:px-8 py-12 md:py-16">
-      <div className="border-2 border-teal-200 rounded-3xl  bg-gradient-to-br from-gray-800 via-black to-gray-900 shadow-2xl shadow-gray-500 p-6 md:p-10 lg:p-14">
+      <div className="border-2 border-teal-200 rounded-3xl  bg-gradient-to-br from-blue-800 via-cyan-500 to-sky-500 shadow-2xl shadow-gray-500 p-6 md:p-10 lg:p-14">
         
         {/* Grid principal */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center mb-10">
@@ -31,7 +31,7 @@ const InfoCard = () => {
             
             {/* Badge */}
             <div className="flex justify-center lg:justify-start">
-              <span className='inline-flex items-center gap-2 bg-yellow-400 text-black rounded-2xl font-bold text-base md:text-lg px-6 md:px-8 py-3 md:py-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1'>
+              <span className='inline-flex items-center gap-2 bg-blue-900 text-white rounded-2xl font-bold text-base md:text-lg px-6 md:px-8 py-3 md:py-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1'>
                 Santé Mentale des Étudiants
               </span>
             </div>
@@ -87,7 +87,7 @@ const InfoCard = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
           <Link
             to="/article"
-            className="group relative inline-flex items-center justify-center gap-3 bg-black border-2 border-teal-300 hover:bg-yellow-500 text-white font-bold text-base md:text-lg px-8 md:px-10 py-4 md:py-5 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+            className="group relative inline-flex items-center justify-center gap-3 bg-black border-2 border-teal-300 hover:bg-blue-500 text-white font-bold text-base md:text-lg px-8 md:px-10 py-4 md:py-5 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
           >
             <span> lire l'article</span>
           </Link>

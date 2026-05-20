@@ -28,15 +28,15 @@ const Motif = () => {
     
   return (
     <>
-       <div className='flex flex-col w-full h-full bg-gray-950 border-2 border-teal-200 mt-10 rounded-2xl justify-center items-center gap-5 p-9 shadow shadow-emerald-500 '>
+       <div className='flex flex-col w-full h-full bg-gradient-to-br from-blue-800 via-cyan-500 to-sky-5000 border-2 border-teal-200 mt-10 rounded-2xl justify-center items-center gap-5 p-9 shadow shadow-emerald-500 '>
             <p className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-1">
         Notre vision
       </p>
       <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-1">
         Les valeurs de{" "}
-        <span className="text-emerald-600">LE TORCH</span>
+        <span className="text-emerald-900">LE TORCH</span>
       </h1>
-      <p className="text-sm text-gray-500 font-light mb-8">
+      <p className="text-sm text-gray-900 font-light mb-8">
         Ce en quoi nous croyons profondément
       </p>
         <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200 gap-6  dark:border-gray-700 rounded-xl overflow-hidden">
@@ -44,7 +44,7 @@ const Motif = () => {
                 MotifCard.map((item,index) => (
                    <div
                     key={index}
-                     className="relative bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors p-6 group gap-6 rounded-3xl ">
+                     className="relative bg-white dark:bg-blue-900 hover:bg-gray-50 dark:hover:bg-sky-700 transition-colors p-6 group gap-6 rounded-3xl ">
                         <h1 className='border border-teal-200 rounded-4xl w-14 text-black bg-white text-center p-4'>{item.num}</h1>
                         <div className="text-4xl text-emerald-600 mb-4 mt-10">
                             {item.icon}

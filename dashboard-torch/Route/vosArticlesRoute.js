@@ -1,15 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const vosArticlesControllers = require('../controllers/vosArticlesControllers');
 const vosArticlesModels = require('../models/vosArticlesModels');
+const ctrl = require('../controllers/vosArticlesControllers');
 
+router.post('/',                        ctrl.creerVosArticles);
+router.get('/',                         ctrl.trouverVosArticles);
 
-router.post('/', vosArticlesControllers.creerVosArticles);
+// ✅ Toutes les routes fixes AVANT /:id
+router.get('/valider-token/:token',     ctrl.validerParToken);
+router.get('/approuves', async (req, res) => {
+    try {
+        const data = await vosArticlesModels.trouverArticlesApprouves();
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+});
 
-router.get('/', vosArticlesControllers.trouverVosArticles);
-
-router.get('/:id', vosArticlesControllers.trouverVosArticlesParId);
-
-router.delete('/:id', vosArticlesControllers.supprimerVosArticles);
+// /:id en dernier
+router.get('/:id',                      ctrl.trouverVosArticlesParId);
+router.post('/:id/supprimer',           ctrl.supprimerVosArticles);
+router.post('/:id/approuver',           ctrl.approuverArticle);
+router.post('/:id/rejeter',             ctrl.rejeterArticle);
 
 module.exports = router;

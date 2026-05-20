@@ -1,0 +1,80 @@
+<%- include('../Layout/header', { title: 'Admin — Validation articles', currentPage: 'admin' }) %>
+
+<div class="max-w-4xl mx-auto mt-10 px-4">
+
+    <h1 class="text-white font-bold text-xl mb-6">Gestion des articles</h1>
+
+    <!-- EN ATTENTE -->
+    <h2 class="text-yellow-400 font-semibold text-lg mb-4">
+        En attente de validation (<%= enAttente.length %>)
+    </h2>
+
+    <% if (enAttente.length === 0) { %>
+        <p class="text-gray-600 text-sm mb-10">Aucun article en attente.</p>
+    <% } %>
+
+    <% enAttente.forEach(article => { %>
+    <div class="bg-gray-900 border border-yellow-600 rounded-xl p-5 mb-4">
+        <p class="text-xs text-gray-500"><%= article.pseudo %> · <%= article.theme %></p>
+        <p class="text-gray-200 font-semibold mt-1"><%= article.titre %></p>
+        <p class="text-gray-400 text-sm mt-2"><%= article.description %></p>
+
+        <div class="flex gap-3 mt-4 items-start flex-wrap">
+            <!--  Approuver -->
+            <form action="/api/vosArticles/<%= article.id %>/approuver" method="POST">
+                <button type="submit"
+                        class="bg-green-600 hover:bg-green-700 text-white text-sm px-4 py-2 rounded-lg">
+                     Approuver
+                </button>
+            </form>
+
+            <!-- ❌ Rejeter avec motif -->
+            <form action="/api/vosArticles/<%= article.id %>/rejeter"
+                  method="POST" class="flex flex-col gap-2 flex-1">
+                <textarea name="motif" rows="2"
+                          placeholder="Motif du rejet (optionnel)..."
+                          class="bg-gray-800 border border-gray-700 text-gray-300 text-sm rounded-lg p-2 w-full resize-none focus:border-red-500 outline-none">
+                </textarea>
+                <button type="submit"
+                        class="bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2 rounded-lg self-start">
+                    ❌ Rejeter
+                </button>
+            </form>
+        </div>
+    </div>
+    <% }) %>
+
+    <!-- HISTORIQUE -->
+    <h2 class="text-gray-400 font-semibold text-lg mt-10 mb-4"> Historique</h2>
+
+    <% tous.forEach(article => { %>
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 mb-3 flex justify-between items-center">
+        <div>
+            <p class="text-xs text-gray-500"><%= article.pseudo %> · <%= article.theme %></p>
+            <p class="text-gray-200 text-sm font-medium"><%= article.titre %></p>
+            <% if (article.statut === 'rejete' && article.motif_rejet) { %>
+                <p class="text-xs text-red-400 mt-1">Motif : <%= article.motif_rejet %></p>
+            <% } %>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-semibold px-3 py-1 rounded-full
+                <%= article.statut === 'approuve' ? 'bg-green-900 text-green-400' :
+                    article.statut === 'rejete'   ? 'bg-red-900 text-red-400'    :
+                                                    'bg-yellow-900 text-yellow-400' %>">
+                <%= article.statut === 'approuve' ? 'Publié' :
+                    article.statut === 'rejete'   ? 'Rejeté' : '⏳ En attente' %>
+            </span>
+
+            <form action="/api/vosArticles/<%= article.id %>/supprimer" method="POST"
+                  onsubmit="return confirm('Supprimer ?')">
+                <button type="submit"
+                        class="text-xs text-white bg-red-500 px-3 py-1 rounded-lg hover:bg-red-600">
+                    Supprimer
+                </button>
+            </form>
+        </div>
+    </div>
+    <% }) %>
+
+</div>

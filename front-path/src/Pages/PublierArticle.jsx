@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { creerVosArticle } from '../api/articles' 
+import { creerVosArticle } from '../api/articles'
+import { Link } from 'react-router-dom' 
+import VoirArticlePublier from './VoirArticlePublier'
 const PublierArticle = () => {
   const navigate = useNavigate()
   const [erreur, setErreur] = useState('')
@@ -41,17 +43,17 @@ navigate('/VoirArticlePublier')
   return (
     <div className="max-w-3xl mx-auto px-6 py-10">
       <div className="text-center mb-8">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-white">
+        <h1 className="text-3xl md:text-4xl font-bold text-blue-900">
           Publier un article
         </h1>
-        <p className="text-slate-300 mt-2">
-          Partagez vos connaissances avec la communauté PATH.TECH
+        <p className="text-blue-600 font-semibold mt-2">
+          Partagez vos connaissances avec la communauté Le TORCH
         </p>
       </div>
 
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-6 bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 shadow-xl"
+        className="flex flex-col gap-6 bg-blue-900/70  p-8 rounded-3xl border border-white/10 shadow-xl"
       >
         <input
           name="pseudo"
@@ -97,8 +99,18 @@ navigate('/VoirArticlePublier')
           {loading ? "Publication..." : "Publier l'article"}
         </button>
       </form>
+       <div className='flex items-center justify-center '>
+        <Link
+                          to="/VoirArticlePublier"
+                          className=" mt-14 text-blue-600 items-center font-bold px-6 py-3 rounded-xl  transition transform hover:-translate-y-1"
+                      >
+                          Voir les article publier
+                      </Link> 
+       </div>
     </div>
-  )
+    
+  );
+                      
 }
 
 export default PublierArticle

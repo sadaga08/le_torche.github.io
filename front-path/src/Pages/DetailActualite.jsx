@@ -39,20 +39,20 @@ const DetailActualite = () => {
      
                      {/* RETOUR */}
                      <Link
-                         to="/Orientation"
-                         className="text-slate-400 hover:text-white text-sm flex items-center gap-2 mb-8 transition-colors"
+                         to="/Actualite"
+                         className="text-blue-400 hover:text-white text-sm flex items-center gap-2 mb-8 transition-colors"
                      >
                          ← Retour aux articles
                      </Link>
      
                      {/* TITRE */}
-                     <h1 className="text-4xl font-extrabold mb-4">
+                     <h1 className="text-4xl font-extrabold text-blue-700 mb-4">
                          {article.titre}
                      </h1>
      
                      {/* META */}
                      <div className="flex items-center gap-4 mb-6">
-                         <span className="text-slate-400">
+                         <span className="text-blue-400">
                              Publié le {new Date(article.date_publication).toLocaleDateString('fr-FR')}
                          </span>
                          {article.category && (
@@ -70,7 +70,7 @@ const DetailActualite = () => {
                      />
      
                      {/* CONTENU */}
-                     <p className="text-2xl leading-relaxed whitespace-pre-line bg-white/5 border rounded-3xl border-slate-300 backdrop-blur-md p-8">
+                     <p className="text-2xl leading-relaxed whitespace-pre-line  bg-cyan-200/70 shadow-2xl shadow-blue-300 text-black  border rounded-3xl border-slate-300 backdrop-blur-md p-8">
                          {article.content}
                      </p>
      

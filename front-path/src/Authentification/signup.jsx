@@ -44,7 +44,7 @@ const Signup = () => {
         <>
             <div className="w-full h-full flex flex-col items-center justify-center mt-12 gap-3 px-4">
                 <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-                    <h2 className='order-1 md:order-2 md:text-center font-extrabold text-4xl sm:text-2xl text-white'>
+                    <h2 className='order-1 md:order-2 md:text-center font-extrabold text-4xl sm:text-2xl text-black'>
                         Inscrivez-vous <span className='text-teal-400'>aujourd'hui</span>
                     </h2>
                 </motion.div>
@@ -55,7 +55,7 @@ const Signup = () => {
                 >
                     {/* ← onSubmit à la place de action="" */}
                     <form onSubmit={handleSubmit} className='w-full max-w-md'>
-                        <div className='border-2 border-emerald-300 p-12 rounded-3xl shadow-lg bg-black/50'>
+                        <div className='border-2 border-emerald-300 p-12 rounded-3xl shadow-lg bg-black'>
                             <input
                                 type="text"
                                 placeholder='ex : misterious'
@@ -97,8 +97,8 @@ const Signup = () => {
                         </div>
                          <div className='text-center items-center justify-center  mt-14'>
                                 <Link to="/Authentification/login">
-                                    <p className='text-blue-400 hover:text-blue-300 transition duration-300'>
-                                        Vous avez déjà un compte ? <span className='text-teal-700 text-xs'>Connectez-vous</span>
+                                    <p className='text-blue-500 hover:text-blue-300 transition duration-300'>
+                                        Vous avez déjà un compte ? <span className='text-black text-xs'>Connectez-vous</span>
                                     </p>
                                 </Link>
                             </div>
@@ -110,7 +110,7 @@ const Signup = () => {
                     <img src={Aboutus} alt="About us" className='rounded-3xl mx-auto' />
                 </motion.div>
 
-                <motion.div className="flex flex-col items-center justify-center bg-white p-4 md:p-6 rounded-4xl shadow shadow-slate-500 max-w-4xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }}>
+                <motion.div className="flex flex-col items-center justify-center bg-gradient-to-br from-blue-400 to-sky-500 p-4 md:p-6 rounded-4xl shadow shadow-slate-500 max-w-4xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }}>
                     <h1 className='text-center items-center text-black/900 text-3xl font-bold mb-4'>Découvrez qui nous sommes</h1>
                     <div className='text-gray-700 leading-relaxed space-y-4'>
                         <p><span className='text-slate-900 font-extrabold text-2xl'>Le Torch</span> est plus qu'une simple plateforme ou un simple journal universitaire, c'est un héritage, un guide pour tous les étudiants.</p>
@@ -120,15 +120,15 @@ const Signup = () => {
                 </motion.div>
 
                 <div className="flex flex-col items-center justify-center gap-4 w-full max-w-4xl mt-8">
-                    <h2 className='text-white text-3xl font-bold mb-4'>Questions Fréquentes</h2>
+                    <h2 className='text-blue-900 text-3xl font-bold mb-4'>Questions Fréquentes</h2>
                     {questionCard.map((quest, index) => (
-                        <motion.div key={quest.id} className='flex flex-col w-full bg-white p-5 px-4 py-6 rounded-3xl shadow-lg cursor-pointer hover:shadow-xl transition-shadow duration-300' onClick={() => toggleQuestion(quest.id)} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4, delay: 0.8 + (index * 0.1) }}>
+                        <motion.div key={quest.id} className='flex flex-col w-full bg-gradient-to-br from-blue-400 to-sky-500 p-5 px-4 py-6 rounded-3xl shadow-lg cursor-pointer hover:shadow-xl transition-shadow duration-300' onClick={() => toggleQuestion(quest.id)} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4, delay: 0.8 + (index * 0.1) }}>
                             <div className='flex justify-between items-center gap-4'>
                                 <h1 className='text-xl md:text-2xl font-extrabold text-black'>{quest.name}</h1>
                                 <motion.span animate={{ rotate: openQuestionId === quest.id ? 180 : 0 }} transition={{ duration: 0.3 }}>
                                     {openQuestionId === quest.id
-                                        ? <FaMinus size={34} className='border-2 border-white bg-gradient-to-br from-red-200 via-pink-500 to-red-400 p-2 rounded-full flex-shrink-0' />
-                                        : <FaPlus size={34} className='border-2 border-white bg-gradient-to-br from-red-200 via-pink-500 to-red-400 p-2 rounded-full flex-shrink-0' />
+                                        ? <FaMinus size={34} className='border-2 border-teal-500 bg-gradient-to-br from-red-200 via-pink-500 to-red-400 p-2 rounded-full flex-shrink-0' />
+                                        : <FaPlus size={34} className='border-2 border-teal-500 bg-gradient-to-br from-red-200 via-pink-500 to-red-400 p-2 rounded-full flex-shrink-0' />
                                     }
                                 </motion.span>
                             </div>

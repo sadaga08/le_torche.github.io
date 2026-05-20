@@ -51,14 +51,14 @@ const Orientation = () => {
     return (
         <>
             <div className='w-full px-4 py-6'>
-                <h1 className='mt-10 text-2xl font-extrabold text-white text-center'>
+                <h1 className='mt-10 text-2xl font-extrabold text-blue-900 text-center'>
                     Bienvenue dans notre section orientation{' '}
-                    <span className='text-slate-400 font-extrabold text-xl font-serif'>
+                    <span className='text-sky-800 font-extrabold text-xl font-serif'>
                         on propose des conseils sur comment vous orienter afin d'avoir toutes les infos nécessaires au sein de l'université
                     </span>
                 </h1>
 
-                <div className="border-2 border-teal-200 w-full rounded-2xl md:rounded-3xl bg-gradient-to-br from-gray-800 via-black to-gray-900 shadow-2xl shadow-slate-400 p-4 md:p-8 lg:p-10">
+                <div className="border-2 border-teal-200 w-full rounded-2xl md:rounded-3xl  bg-gradient-to-br from-blue-800 via-cyan-500 to-sky-500 shadow-2xl shadow-slate-400 p-4 md:p-8 lg:p-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
                         {/* IMAGE */}
@@ -78,13 +78,13 @@ const Orientation = () => {
                             <p className='text-xl font-bold text-slate-100 line-clamp-4'>
                                 {featureArticleOrient.content}
                             </p>
-                            <span className='text-lg text-slate-600 font-bold'>
+                            <span className='text-sm text-slate-200 font-light'>
                                 Date de publication : {new Date(featureArticleOrient.date_publication).toLocaleDateString('fr-FR')}
                             </span>
                             <div className="flex w-full items-center justify-center mt-14">
                                 <Link
                                     to={`/Orientation/${featureArticleOrient.id}`}
-                                    className="inline-flex text-white items-center gap-3 bg-gradient-to-r from-slate-700 to-slate-900 font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:-translate-y-1"
+                                    className="inline-flex text-white items-center gap-3 bg-gradient-to-r from-blue-700 to-cyan-900 font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:-translate-y-1"
                                 >
                                     Lire l'article complet →
                                 </Link>

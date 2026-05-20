@@ -40,7 +40,7 @@ const handleSubmit = async (e) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className='order-1 md:order-2 md:text-center font-extrabold text-4xl sm:text-2xl text-white'>
+                    <h2 className='order-1 md:order-2 md:text-center font-extrabold text-4xl sm:text-2xl text-blue-900'>
                         Veuillez vous connecter et Rejoignez notre journal universitaire
                     </h2>
                 </motion.div>
@@ -52,7 +52,7 @@ const handleSubmit = async (e) => {
                     transition={{ duration: 0.5, delay: 0.2 }}
                 >
                     <form onSubmit={handleSubmit} className='w-full max-w-md'>
-                        <div className='border-2 border-emerald-300 p-12 rounded-3xl shadow-lg bg-black/50'>
+                        <div className='border-2 border-emerald-300 p-12 rounded-3xl shadow-lg bg-black'>
                             <input
                                 type="email"
                                 placeholder='Email'

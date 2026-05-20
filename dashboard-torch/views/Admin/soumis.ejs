@@ -1,0 +1,16 @@
+<%- include('../Layout/header', { title: 'Article soumis', currentPage: '' }) %>
+
+<div class="max-w-lg mx-auto mt-20 text-center">
+    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-10">
+        <div class="text-4xl mb-4">⏳</div>
+        <h2 class="text-gray-200 text-xl font-semibold mb-2">Article soumis !</h2>
+        <p class="text-gray-500 text-sm">
+            Ton article est <span class="text-yellow-400 font-medium">en attente de validation</span> 
+            par l'administrateur. Tu recevras une réponse prochainement.
+        </p>
+        <a href="/dashboard" 
+           class="mt-6 inline-block text-sm text-gray-400 hover:text-white underline">
+            Retour au dashboard
+        </a>
+    </div>
+</div>

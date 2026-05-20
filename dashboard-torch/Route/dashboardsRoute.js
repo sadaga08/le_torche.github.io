@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const vosArticlesModels = require('../models/vosArticlesModels'); // ✅ une seule fois
 const articleModel = require('../models/articleModel');
-const vosArticlesModels = require('../models/vosArticlesModels');
-const videoModels = require('../models/videoModels'); 
+const videoModels = require('../models/videoModels');
+
 // Dashboard principal
 router.get('/', async (req, res) => {
     try {
@@ -19,18 +20,35 @@ router.get('/create', (req, res) => {
     res.render('Admin/createArticle');
 });
 
-// Vos articles (étudiants)
-router.get('/vosArticles', async (req, res) => {
+router.get('/adminArticles', async (req, res) => {
     try {
-        const articles = await vosArticlesModels.trouverVosArticle();
-        res.render('Admin/vosArticles', { articles, currentPage: 'vosArticles' });
+        const enAttente = await vosArticlesModels.trouverArticlesEnAttente();
+        const tous      = await vosArticlesModels.trouverTousVosArticles(); // ← nouvelle fonction
+        res.render('Admin/gestionVosArticle', { enAttente, tous });
     } catch (error) {
-        console.log(error);
-        res.status(500).send('Erreur serveur');
+        console.error(error);
+        res.status(500).json({ message: "Erreur serveur" });
     }
 });
 
-// ✅ Vidéos — route manquante
+router.get('/vosArticles', async (req, res) => {
+    try {
+        const articles  = await vosArticlesModels.trouverVosArticle(); // ← approuvés seulement
+        const enAttente = await vosArticlesModels.trouverArticlesEnAttente();
+        const tous      = await vosArticlesModels.trouverTousVosArticles();
+        res.render('Admin/VosArticles', { articles, enAttente, tous });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+});
+
+// Page confirmation soumission
+router.get('/vosArticles/soumis', (req, res) => {
+    res.render('Admin/soumis'); // ← soumis.ejs existe bien
+});
+
+// Vidéos
 router.get('/videoTorch', async (req, res) => {
     try {
         const videotorch = await videoModels.trouverVideoTorch();
@@ -41,7 +59,6 @@ router.get('/videoTorch', async (req, res) => {
     }
 });
 
-// 
 router.get('/videoTorch/create', (req, res) => {
     res.render('Admin/createVideo');
 });

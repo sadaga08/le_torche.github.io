@@ -7,27 +7,27 @@ const NavLink = () => {
         {
             name: "Technologie",
             path: "/Technologie",
-            color: "bg-black"
+            color: "bg-blue-900"
         },
         {
             name: "Orientation",
             path: "/Orientation",
-            color: "bg-black"
+            color: "bg-blue-900"
         },
         {
             name: "Soft & Skils",
             path: "/SoftSkils",
-            color: "bg-black"
+            color: "bg-blue-900"
         },
         {
             name: "Actualité",
             path: "/Actualite",
-            color: "bg-black"
+            color: "bg-blue-900"
         },
         {
-            name: "Article",
+            name: "Litérature",
             path: "/Article",
-            color: "bg-black"
+            color: "bg-blue-900"
         }
     ]
 
@@ -86,7 +86,7 @@ const NavLink = () => {
                     >
                         <Link 
                             to={item.path}
-                            className={`block bg-gradient-to-r ${item.color} rounded-2xl text-center text-xl font-bold px-6 py-3 border-2 border-teal-300 shadow-md shadow-amber-50/50 text-white hover:shadow-2xl hover:shadow-amber-50 transition-shadow duration-300`}
+                            className={`block bg-gradient-to-r ${item.color} rounded-2xl text-center text-xl font-bold px-6 py-3 border-2 border-teal-300 shadow-md shadow-amber-50/50 text-white hover:shadow-2xl hover:shadow-blue-400 transition-shadow duration-300`}
                         >
                             {item.name}
                         </Link>

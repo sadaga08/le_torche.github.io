@@ -58,14 +58,14 @@ const Technologie = () => {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className='font-extrabold text-3xl text-white text-center'
+                    className='font-bold text-3xl text-blue-900 text-center'
                 >
                     Découvrez tous les articles et vidéos sur l'avancée technologique
                 </motion.h1>
             </div>
 
             {/* HERO SECTION */}
-            <div className="border-2 border-teal-200 w-full rounded-2xl md:rounded-3xl bg-gradient-to-br from-gray-800 via-black to-gray-900 shadow-2xl shadow-slate-400 p-4 md:p-8 lg:p-10">
+            <div className="border-2 border-teal-200 w-full rounded-2xl md:rounded-3xl  bg-gradient-to-br from-blue-800 via-cyan-500 to-sky-500 shadow-2xl shadow-slate-400 p-4 md:p-8 lg:p-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
                     {/* IMAGE */}
@@ -91,7 +91,7 @@ const Technologie = () => {
                         <div className='flex items-center justify-center mt-14'>
                             <Link
                                 to={`/Technologie/${featureArticleTechno.id}`}
-                                className='inline-flex items-center text-white gap-3 bg-gradient-to-r from-slate-700 to-slate-900 font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:-translate-y-1'
+                                className='inline-flex items-center text-white gap-3 bg-gradient-to-r from-blue-700 to-cyan-900 font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:-translate-y-1'
                             >
                                 Lire l'article complet →
                             </Link>

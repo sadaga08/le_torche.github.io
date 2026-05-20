@@ -6,6 +6,8 @@ import HomePage from './Composant/HomePges/HomePage'
 import Footer from './Composant/Footer'
 import Login from './Authentification/Login'
 import Signup from './Authentification/signup'
+import Services from './Pages/Services'
+import Contact from './Pages/Contact'
 import ProtectRouter from './Composant/ProtectRouter'
 // importation des pages
 import Technologie from './Pages/Technologie'
@@ -48,6 +50,8 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/Authentification/Login' element={<Login /> }/>
           <Route path='/Authentification/Signup' element={<Signup /> }/>
+          <Route path='/Services' element={<Services /> }/>
+          <Route path='/Contact' element={<Contact /> }/>
         </Routes>
         <Footer />
       </BrowserRouter>

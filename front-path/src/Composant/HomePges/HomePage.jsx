@@ -77,7 +77,7 @@ const HomePage = () => {
     <>
     <div className="w-full min-h-screen px-4 md:px-6 lg:px-8 py-8 md:py-12">
       <motion.div 
-        className="border-2 border-teal-200 w-full rounded-2xl md:rounded-3xl bg-gradient-to-br from-gray-800 via-black to-gray-900 shadow-2xl shadow-slate-400 p-4 md:p-8 lg:p-10"
+        className="border-2 border-teal-200 w-full rounded-2xl md:rounded-3xl bg-gradient-to-br from-blue-800 via-cyan-500 to-sky-500 shadow-2xl shadow-slate-400 p-4 md:p-8 lg:p-10"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
@@ -111,7 +111,7 @@ const HomePage = () => {
             >
               <Link 
                 to="/Article"
-                className='inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-4xl md:text-lg px-6 md:px-8 py-3 md:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1'
+                className='inline-block bg-blue-900 hover:bg-yellow-500 text-white font-bold text-4xl md:text-lg px-6 md:px-8 py-3 md:py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1'
               >
                  Dernière Publication
               </Link>
@@ -153,7 +153,7 @@ const HomePage = () => {
     <div className="flex w-full   ">
       <Link 
        to="/Article"
-      className='flex text-2xl  gap-3 font-extrabold text-slate-200 ml-3 mt-2'>
+      className='flex text-2xl  gap-3 font-extrabold text-black ml-3 mt-2'>
       Dernière Publication <span className='font-light '><GoArrowRight size={42}/></span>
       </Link>
     </div>

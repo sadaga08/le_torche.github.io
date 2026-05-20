@@ -37,12 +37,12 @@ const DetailTechnologie = () => {
 
     return (
         <>
-            <div className="max-w-5xl mx-auto px-6 py-12 text-white">
+            <div className="max-w-5xl mx-auto px-6 py-12 text-blue-800">
 
                 {/* RETOUR */}
                 <Link
                     to="/Technologie"
-                    className="text-slate-400 hover:text-white text-sm flex items-center gap-2 mb-8 transition-colors"
+                    className="text-blue-800 hover:text-blue-600 text-sm flex items-center gap-2 mb-8 transition-colors"
                 >
                     ← Retour aux articles
                 </Link>
@@ -54,7 +54,7 @@ const DetailTechnologie = () => {
 
                 {/* META */}
                 <div className="flex items-center gap-4 mb-6">
-                    <span className="text-slate-400 text-sm">
+                    <span className="text-blue-800 text-sm">
                         Publié le {new Date(article.date_publication).toLocaleDateString('fr-FR')}
                     </span>
                     {article.category && (
@@ -72,7 +72,7 @@ const DetailTechnologie = () => {
                 />
 
                 {/* CONTENU */}
-                <p className="text-xl leading-relaxed whitespace-pre-line bg-white/5 backdrop-blur-md border border-slate-300 rounded-3xl p-8">
+                <p className="text-xl leading-relaxed whitespace-pre-line bg-cyan-200/70 shadow-2xl shadow-blue-300 text-black backdrop-blur-md border border-teal-900 rounded-2xl p-8">
                     {article.content}
                 </p>
 

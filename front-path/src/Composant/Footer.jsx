@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { FaTiktok, FaInstagramSquare, FaLinkedin, FaFacebookSquare } from "react-icons/fa"
 import { IoIosMail } from "react-icons/io"
-import LOGO from "../assets/ImgComponent/LOGO.png"
+import LOGO from "../assets/ImgComponent/le_torch_logo.svg";
 const Footer = () => {
   const navLinks = [
     { name: "Technologie", path: "/Technologie" },
@@ -19,13 +19,13 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: <FaTiktok />, url: "https://tiktok.com/@letorch", label: "TikTok" },
-    { icon: <FaInstagramSquare />, url: "https://instagram.com/letorch", label: "Instagram" },
+    { icon: <FaInstagramSquare />, url: "https://www.instagram.com/letor_ch/", label: "Instagram" },
     { icon: <FaFacebookSquare />, url: "https://facebook.com/letorch", label: "Facebook" },
     { icon: <FaLinkedin />, url: "https://linkedin.com/company/letorch", label: "LinkedIn" }
   ]
 
   return (
-    <footer className='w-full bg-black text-white border-t-2 border-yellow-400/20 mt-20'>
+    <footer className='w-full bg-gradient-to-r from-gray-900 via-cyan-950 to-blue-500 text-white border-t-2 border-yellow-400/20 mt-20'>
       <div className='container mx-auto px-4 md:px-6 lg:px-8 py-12'>
         
         {/* Section principale */}

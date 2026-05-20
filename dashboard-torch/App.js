@@ -14,15 +14,22 @@ const app = express();
 const cors = require('cors');
 
 const methodOverride = require('method-override');
-app.use(methodOverride('_method'));
+// ✅ ORDRE CORRECT
 app.use(cors({
     origin: 'http://localhost:5173',
     methods: ['GET', 'POST', 'DELETE', 'PUT'],
     credentials: true
 }));
 app.use(express.json());
-app.use('/uploads', express.static('uploads'));
-app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: true })); // ← AJOUTE cette ligne
+app.use(methodOverride(function (req, res) {
+    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+        return req.body._method;
+    }
+    if (req.query && req.query._method) {
+        return req.query._method; // ← lit aussi depuis l'URL (?_method=DELETE)
+    }
+}));app.set("view engine", "ejs");
 app.set("views", "./Views"); // ← V majuscule comme ton vrai dossier
 // App.js
 app.use(express.static('public'));

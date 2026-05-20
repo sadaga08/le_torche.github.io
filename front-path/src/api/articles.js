@@ -97,6 +97,12 @@ export const getVosArticles = async () => {
   return res.json();
 };
 
+export const getVosArticlesApprouves = async () => {
+    const res = await fetch(`${BASE_URL}/api/vosArticles/approuves`);
+    if (!res.ok) throw new Error("Erreur fetch articles approuvés");
+    return res.json();
+};
+
 export const supprimerVosArticle = async (id) => {
   const res = await fetch(`${BASE_URL}/api/vosArticles/${id}`, {
     method: "DELETE",
