@@ -59,9 +59,9 @@ useEffect(() => {
                                         <p className="text-blue-900 text-sm">Aucun commentaire pour l'instant.</p>
                                     ) : (
                                         (commentaires[article.id] || []).map(c => (
-                                            <div key={c.id} className="bg-white/5 rounded-xl p-3">
-                                                <p className="text-teal-600 text-xs font-bold">{c.pseudo}</p>
-                                                <p className="text-slate-300 text-sm mt-1">{c.contenu}</p>
+                                            <div key={c.id} className="bg-white/5 rounded-xl p-3 border border-slate-500">
+                                                <p className="text-teal-900 text-xs font-extrabold">{c.pseudo}</p>
+                                                <p className="text-slate-700 text-sm mt-1">{c.contenu}</p>
                                                 <p className="text-slate-600 text-xs mt-1">
                                                     {new Date(c.createdAt).toLocaleDateString('fr-FR')}
                                                 </p>
